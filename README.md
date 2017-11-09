@@ -31,6 +31,6 @@ Para desenvolver, utilize a **branch** developer.
 Para deploy, necessário solicitar **merge request** para a **branch** master.
 
 
-### Licensa
+### Licença
 
 Este projeto está licenciado sob a - MIT License [LICENSE.md](LICENSE.md).
