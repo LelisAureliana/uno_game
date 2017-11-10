@@ -9,8 +9,11 @@ Jogo UNO para desktop.
 ```
 
 ## Authors
+* **Lelis Aureliana** - [LelisAureliana](https://github.com/LelisAureliana)
+* **Bianca Furtado** - [biancafurtado](https://github.com/biancafurtado)
+* **Larrissa Dantas** - [LarrissaDantas](https://github.com/LarrissaDantas)
+* **Sérgio Davi** - [sergioivad](https://github.com/sergioivad)
 
-* **Sérgio Davi** - *Inicial* - [sergioivad](https://github.com/sergioivad)
 
 ## Pré-requsito
 
