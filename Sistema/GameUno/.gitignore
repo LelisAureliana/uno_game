@@ -1,4 +1,3 @@
 uno.db
 uno_log.txt
-/dist
-/build
+build/
