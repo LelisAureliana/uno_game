@@ -32,5 +32,6 @@ public class MainFrameController {
         System.out.println("view.MainFrameController.setView()"+view.getClass().getName());
         view.setVisible(true);
         mainFrame.setContentPane(view);
+        refreshFrame();
     }
 }
