@@ -1,0 +1,10 @@
+
+###	 UNO Logger 	###	
+###[Sun Nov 12 19:12:53 GMT-03:00 2017]###	
+
+[Erro]	[Sun Nov 12 19:12:53 GMT-03:00 2017]-> Fail to connect database (E: No suitable driver found for jdbc:sqlite:uno.db)
+
+###	 UNO Logger 	###	
+###[Sun Nov 12 23:08:11 GMT-03:00 2017]###	
+
+[Erro]	[Sun Nov 12 23:08:11 GMT-03:00 2017]-> Fail to connect database (E: No suitable driver found for jdbc:sqlite:uno.db)

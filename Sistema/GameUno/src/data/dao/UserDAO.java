@@ -1,0 +1,102 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package data.dao;
+
+import java.time.Instant;
+import java.util.Date;
+import model.user.User;
+import data.DataBase;
+import data.DataBase;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import util.AppLog;
+/**
+ *
+ * @author sergi
+ */
+
+/*
+User Table
+                + "	login VARCHAR(10),\n"
+                + "	date_birth DATE NOT NULL,\n"
+                + "	name VARCHAR(45) NOT NULL,\n"
+                + "	src_profile TEXT NOT NULL,\n"
+                + "	password TEXT NOT NULL,\n"
+                + "	first_contact INT, \n"
+*/
+public class UserDAO implements DAO{
+    private Connection conn;
+    
+    public UserDAO() {
+        this.conn = DataBase.getConnection();
+    }
+    
+    @Override
+    public void INSERT(Object myDAO) {
+        User myUser = (User) myDAO;
+        String sql = "INSERT INTO User (login,date_birth,name,src_profile,password) VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            
+            preparedStatement.setString(1,myUser.getName());
+            preparedStatement.setDate(2,(java.sql.Date) myUser.getDateBirth());
+            preparedStatement.setString(3,myUser.getName());
+            preparedStatement.setString(4,myUser.getSrcProfile());
+            preparedStatement.setString(5,myUser.getPassword());
+            
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+     
+            switch(ex.getErrorCode()){
+            case 19:
+                AppLog.error("Usuário já existe "+" E: ("+ex.getMessage()+")");
+                return;
+            }
+            AppLog.error("Erro desconhecido ao inserir em [User]"+" E: ("+ex.getMessage()+")");
+            return;
+        }
+    }
+
+    @Override
+    public void UPDATE(Object myDAO) {
+ 
+    }
+
+    @Override
+    public void DELETE(Object myDAO) {
+    
+    }
+    
+    public List<User> getAll(){
+        List<User> outList = new ArrayList<>();
+        Statement stmt;
+        try {
+            stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT login,date_birth,name,src_profile,first_contact FROM User");
+            while(rs.next()){
+                User actualUser = new User();
+                actualUser.setLogin(rs.getString("login"));
+                actualUser.setName(rs.getString("name"));
+                actualUser.setDateBirth(rs.getDate("date_birth"));
+                actualUser.setSrcProfile(rs.getString("src_profile"));
+                actualUser.setFirstContact(rs.getInt("first_contact"));
+               
+                outList.add(actualUser);
+            }
+        } catch (SQLException ex) {
+            AppLog.error("Erro desconhecido ao buscar todos os usuários em [User]"+" E: ("+ex.getMessage()+")");
+        }
+        return outList;
+    }
+    
+}
