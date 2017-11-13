@@ -8,6 +8,7 @@ package view.menu;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,6 +71,11 @@ public class MenuPanel extends javax.swing.JPanel {
         btnOut.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         btnOut.setForeground(new java.awt.Color(51, 51, 51));
         btnOut.setText("Sair do jogo");
+        btnOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout button_panelLayout = new javax.swing.GroupLayout(button_panel);
         button_panel.setLayout(button_panelLayout);
@@ -104,7 +110,14 @@ public class MenuPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutActionPerformed
+    
+        controller.exitApp();
+    }//GEN-LAST:event_btnOutActionPerformed
 
+    public boolean confirmExit(){
+        return JOptionPane.showConfirmDialog(this, "Deseja sair?","Sair", JOptionPane.OK_CANCEL_OPTION)==2?true:false;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinue;
     private javax.swing.JButton btnOut;

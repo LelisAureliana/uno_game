@@ -5,8 +5,6 @@
  */
 package view;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JPanel;
 import view.load.LoadPanel;
 
@@ -16,24 +14,20 @@ import view.load.LoadPanel;
  */
 public class MainFrameController {
     private static MainFrame mainFrame;
-    LoadPanel a;
-    public MainFrameController(MainFrame mainFrame){
-        this.mainFrame = mainFrame;
-        a = new LoadPanel();
-        setView(a);
-        
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true){
-                    if(a.loadApp()){
-                        //TODO: Chamar a tela de Login
-                    }
-                }
-            }
-        }).start();        
+    LoadPanel loadPanel;
+    public MainFrameController(){
+        mainFrame = new MainFrame();
+        loadPanel = new LoadPanel();
     }
-
+    
+    public static void startView(){
+        mainFrame.setVisible(true);
+        setView(new LoadPanel());
+    }
+    
+    public static void refreshFrame(){
+        mainFrame.revalidate();
+    }
     public static void setView(JPanel view){
         System.out.println("view.MainFrameController.setView()"+view.getClass().getName());
         view.setVisible(true);

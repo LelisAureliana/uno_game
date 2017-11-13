@@ -6,9 +6,8 @@
 package view.load;
 
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import kernel.AppKernel;
+import kernel.AppTasks;
+import view.MainFrameController;
 import view.login.LoginController;
 
 
@@ -17,19 +16,34 @@ import view.login.LoginController;
  * @author sergi
  */
 public class LoadPanel extends javax.swing.JPanel {
-
+   
     /**
      * Creates new form LoadPanel
      */
     public LoadPanel() {
         initComponents();
-        progressBar.setMaximum(AppKernel.TASK_MAX_VALUE);
+        progressBar.setMaximum(AppTasks.TASK_MAX_VALUE);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                     if(AppTasks.TASK_VALUE != AppTasks.TASK_MAX_VALUE){   
+                            progressBar.setValue(AppTasks.TASK_VALUE);
+                            txtStatus.setText(AppTasks.TASK_STATUS);
+                         }else{
+                             onLoadComplete();
+                             return;
+                         }
+                }
+            }
+        }).start();
     }
     
     public void onLoadComplete(){
         this.setVisible(false);
         LoginController loginController = new LoginController();
         loginController.startView();
+        MainFrameController.refreshFrame();
     }
 
     /**
@@ -66,15 +80,7 @@ public class LoadPanel extends javax.swing.JPanel {
     private javax.swing.JLabel txtStatus;
     // End of variables declaration//GEN-END:variables
 
-    public boolean loadApp() {
-        while(true){
-                     if(AppKernel.TASK_VALUE != AppKernel.TASK_MAX_VALUE){
-                         txtStatus.setText(AppKernel.TASK_STATUS);
-                         progressBar.setValue(AppKernel.TASK_VALUE);   
-                     }else{
-                         
-                         return true;
-                     }
-        }
-    }
+   
+
+    
 }

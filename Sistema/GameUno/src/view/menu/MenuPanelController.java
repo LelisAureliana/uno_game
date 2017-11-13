@@ -19,6 +19,14 @@ public class MenuPanelController extends ViewController{
         myView = new MenuPanel(this);
         MainFrameController.setView(myView);
     }
+
+    void exitApp() {
+        if(((MenuPanel)myView).confirmExit()){
+        } else {
+            System.exit(0);
+        }
+        
+    }
    
     
     

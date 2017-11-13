@@ -13,11 +13,12 @@ import java.util.logging.Logger;
  *
  * @author sergi
  */
-public class AppKernel {
+public class AppTasks {
     public static String TASK_STATUS;
     public static int TASK_VALUE = 0;
     public static int TASK_MAX_VALUE = 10;
-    public AppKernel(){
+    
+    public AppTasks(){
         executeTasks();
     }
 
@@ -28,10 +29,10 @@ public class AppKernel {
         dataBase.createDataBase();
         TASK_VALUE = 1;
         TASK_STATUS = "Preparando tela de login...";
-        waitMillis(2000);
+        waitMillis(1);
         TASK_VALUE = 2;
         TASK_STATUS = "Embaralhando suas cartas...";
-        waitMillis(1000);
+        waitMillis(1);
         TASK_STATUS = "Boa sorte...";
         TASK_VALUE = TASK_MAX_VALUE;
         
@@ -41,7 +42,7 @@ public class AppKernel {
         try {
             Thread.sleep(millis);
         } catch (InterruptedException ex) {
-            Logger.getLogger(AppKernel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AppTasks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

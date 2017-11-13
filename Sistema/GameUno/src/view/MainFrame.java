@@ -6,30 +6,23 @@
 package view;
 
 import javax.swing.JPanel;
-import kernel.AppKernel;
+import kernel.AppTasks;
 
 /**
  *
  * @author sergi
  */
 public class MainFrame extends javax.swing.JFrame {
-
+    private MainFrameController controller;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        initComponents();
-        //Jogo 
-        new MainFrameController(this);
-        
-        //Tasks
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                new AppKernel();
-            }
-        }).start();
-        
+        initComponents(); 
+    }
+
+    public void setController(MainFrameController controller) {
+        this.controller = controller;
     }
     
     
