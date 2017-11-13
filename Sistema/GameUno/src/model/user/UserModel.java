@@ -22,4 +22,18 @@ public class UserModel {
     public List<User> getAllUsers(){
         return myDAO.getAll();
     }
+    
+    public void insertUser(User u){
+        myDAO.INSERT(u);
+    }
+    
+    public boolean doLogin(User u) {
+        
+        User searchUser =  myDAO.doLogin(u);
+        
+        if(searchUser!=null){
+            return true;
+        }
+        return  false;
+    }
 }

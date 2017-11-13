@@ -6,8 +6,11 @@
 package kernel;
 
 import data.DataBase;
+import java.sql.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.user.User;
+import model.user.UserModel;
 
 /**
  *
@@ -29,10 +32,21 @@ public class AppTasks {
         dataBase.createDataBase();
         TASK_VALUE = 1;
         TASK_STATUS = "Preparando tela de login...";
-        waitMillis(1);
+        
+        UserModel model = new UserModel();
+        User teste = new User();
+        
+        teste.setLogin("sdteotonio");
+        teste.setName("Sergio Davi");
+        teste.setPassword("123");
+        teste.setDateBirth(new Date(231321412));
+        teste.setSrcProfile("teste");
+        
+        model.insertUser(teste);
+        waitMillis(1000);
         TASK_VALUE = 2;
         TASK_STATUS = "Embaralhando suas cartas...";
-        waitMillis(1);
+        waitMillis(1000);
         TASK_STATUS = "Boa sorte...";
         TASK_VALUE = TASK_MAX_VALUE;
         

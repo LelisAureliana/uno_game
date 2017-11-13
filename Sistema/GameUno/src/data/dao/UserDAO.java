@@ -48,7 +48,7 @@ public class UserDAO implements DAO{
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             
-            preparedStatement.setString(1,myUser.getName());
+            preparedStatement.setString(1,myUser.getLogin());
             preparedStatement.setDate(2,(java.sql.Date) myUser.getDateBirth());
             preparedStatement.setString(3,myUser.getName());
             preparedStatement.setString(4,myUser.getSrcProfile());
@@ -97,6 +97,30 @@ public class UserDAO implements DAO{
             AppLog.error("Erro desconhecido ao buscar todos os usuários em [User]"+" E: ("+ex.getMessage()+")");
         }
         return outList;
+    }
+
+    public User doLogin(User u) {
+        String sql= "SELECT * FROM User WHERE login = ? AND password = ?";
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);
+            
+            preparedStatement.setString(1, u.getLogin());
+            preparedStatement.setString(2, u.getPassword());
+            ResultSet rs = preparedStatement.executeQuery();
+            while(rs.next()){
+                User userS = new User();
+                userS.setName(rs.getString("name"));
+                userS.setFirstContact(rs.getInt("first_contact"));
+                
+                return userS;
+                
+            }
+            return null;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
 }

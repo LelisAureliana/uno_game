@@ -5,6 +5,8 @@
  */
 package view.login;
 
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -101,8 +103,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
     // TODO add your handling code here:
-        this.setVisible(false);
-        mController.onBtnLoginClicked();
+      mController.onBtnLoginClicked(txtLogin.getText(),String.valueOf(passWord.getPassword()));
     }//GEN-LAST:event_btnLoginActionPerformed
 
 
@@ -118,4 +119,13 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField passWord;
     private javax.swing.JTextField txtLogin;
     // End of variables declaration//GEN-END:variables
+
+    void confirmLogin(boolean doLogin) {
+        if(doLogin){
+            JOptionPane.showMessageDialog(this,"Login Realizado com sucesso");
+            mController.loginSuccess();
+        }else{
+            JOptionPane.showMessageDialog(this,"Falha ao realizar login");
+        }
+   }
 }
