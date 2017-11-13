@@ -7,6 +7,7 @@ package model.user;
 
 import data.dao.UserDAO;
 import java.util.List;
+import model.game.GameModel;
 
 /**
  * 
@@ -32,6 +33,7 @@ public class UserModel {
         User searchUser =  myDAO.doLogin(u);
         
         if(searchUser!=null){
+            GameModel.USER_LOGGED = searchUser; 
             return true;
         }
         return  false;
