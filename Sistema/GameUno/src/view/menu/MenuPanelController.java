@@ -5,7 +5,7 @@
  */
 package view.menu;
 
-import model.game.GameModel;
+import model.game.GameModel; 
 import view.MainFrameController;
 import view.ViewController;
 
