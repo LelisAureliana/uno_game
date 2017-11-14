@@ -51,6 +51,7 @@ public class MenuPanel extends javax.swing.JPanel {
         btnContinue = new javax.swing.JButton();
         btnRanking = new javax.swing.JButton();
         btnOut = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         iconBack = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
@@ -78,7 +79,7 @@ public class MenuPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,8 +90,8 @@ public class MenuPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 234, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(0, 8, Short.MAX_VALUE)))
+                .addGap(237, 237, 237))
         );
 
         tutoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 34, -1, 320));
@@ -154,8 +155,16 @@ public class MenuPanel extends javax.swing.JPanel {
 
         add(button_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 220, 200));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconabout.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 40, 30));
+
         iconBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo_Uno_600x500.png"))); // NOI18N
-        add(iconBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, -1, -1));
+        add(iconBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 590, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutActionPerformed
@@ -168,6 +177,11 @@ public class MenuPanel extends javax.swing.JPanel {
         controller.exitTutorial();
     }//GEN-LAST:event_btnExitTutorialActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     // TODO add your handling code here:
+     controller.showAbout();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public boolean confirmExit(){
         return JOptionPane.showConfirmDialog(this, "Deseja sair?","Sair", JOptionPane.OK_CANCEL_OPTION)==2?true:false;
     }
@@ -179,6 +193,7 @@ public class MenuPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnStart;
     private javax.swing.JPanel button_panel;
     private javax.swing.JLabel iconBack;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -195,5 +210,9 @@ public class MenuPanel extends javax.swing.JPanel {
         btnStart.setEnabled(b);
         btnRanking.setEnabled(b);
         iconBack.setEnabled(b);
+    }
+
+    void showAbout(boolean b) {
+        //panelAbout.set
     }
 }
