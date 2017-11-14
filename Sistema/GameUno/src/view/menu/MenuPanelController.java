@@ -44,6 +44,10 @@ public class MenuPanelController implements ViewController{
         }
         
     }
+
+    void showAbout() {
+        myView.showAbout(true);
+    }
    
     
     
