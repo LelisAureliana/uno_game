@@ -5,10 +5,7 @@
  */
 package data.dao;
 
-import java.time.Instant;
-import java.util.Date;
 import model.user.User;
-import data.DataBase;
 import data.DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -35,8 +32,10 @@ User Table
                 + "	first_contact INT, \n"
 */
 public class UserDAO implements DAO{
-    private Connection conn;
-    
+    private final Connection conn;
+    /**
+     * User DAO, classe responsável por manipular o User no banco de dados
+     */
     public UserDAO() {
         this.conn = DataBase.getConnection();
     }
@@ -76,7 +75,10 @@ public class UserDAO implements DAO{
     public void DELETE(Object myDAO) {
     
     }
-    
+    /**
+     * Listar todos os usuário do sistema
+     * @return 
+     */
     public List<User> getAll(){
         List<User> outList = new ArrayList<>();
         Statement stmt;
@@ -98,14 +100,18 @@ public class UserDAO implements DAO{
         }
         return outList;
     }
-
-    public User doLogin(User u) {
+    /**
+     * Verificar login de usuário na base de dados
+     * @param userReceive Ususario que deseja verificar login
+     * @return 
+     */
+    public User doLogin(User userReceive) {
         String sql= "SELECT * FROM User WHERE login = ? AND password = ?";
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             
-            preparedStatement.setString(1, u.getLogin());
-            preparedStatement.setString(2, u.getPassword());
+            preparedStatement.setString(1, userReceive.getLogin());
+            preparedStatement.setString(2, userReceive.getPassword());
             ResultSet rs = preparedStatement.executeQuery();
             while(rs.next()){
                 User userS = new User();
@@ -118,7 +124,7 @@ public class UserDAO implements DAO{
             return null;
             
         } catch (SQLException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            AppLog.error("Erro ao realizar login de usuário "+userReceive.getLogin()+" E:"+ex.getMessage());
         }
         return null;
     }

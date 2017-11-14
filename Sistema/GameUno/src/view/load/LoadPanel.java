@@ -6,13 +6,12 @@
 package view.load;
 
 
-import kernel.AppTasks;
-import view.MainFrameController;
-import view.login.LoginController;
+import kernel.AppTaskManager;
+
 
 
 /**
- *
+ * View para exibir o carregamento das Tasks
  * @author sergi
  */
 public class LoadPanel extends javax.swing.JPanel {
@@ -20,30 +19,28 @@ public class LoadPanel extends javax.swing.JPanel {
     /**
      * Creates new form LoadPanel
      */
-    public LoadPanel() {
+    public LoadPanel(LoadInterface loadInterface) {
         initComponents();
-        progressBar.setMaximum(AppTasks.TASK_MAX_VALUE);
+        progressBar.setMaximum(AppTaskManager.TASK_MAX_VALUE);
         new Thread(new Runnable() {
             @Override
             public void run() {
                 while(true){
-                     if(AppTasks.TASK_VALUE != AppTasks.TASK_MAX_VALUE){   
-                            progressBar.setValue(AppTasks.TASK_VALUE);
-                            txtStatus.setText(AppTasks.TASK_STATUS);
-                         }else{
-                             onLoadComplete();
-                             return;
-                         }
+                     if(!AppTaskManager.TASK_FINALIZE){   
+                            progressBar.setValue(AppTaskManager.TASK_VALUE);
+                            txtStatus.setText(AppTaskManager.TASK_STATUS);
+                        }else{
+                            onLoadComplete();
+                            loadInterface.onLoadComplete();
+                            return;
+                        }
                 }
             }
         }).start();
     }
     
-    public void onLoadComplete(){
+    private void onLoadComplete(){
         this.setVisible(false);
-        LoginController loginController = new LoginController();
-        loginController.startView();
-        MainFrameController.refreshFrame();
     }
 
     /**

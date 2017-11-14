@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import util.AppLog;
 
 /**
@@ -18,6 +16,10 @@ import util.AppLog;
  * @author sergi
  */
 public class DataBase {
+    /**
+     * Metodo parar criar a database local
+     * @return true caso seja criado com sucesso, false caso contrario
+     */
     public boolean createDataBase() 
     {
         Connection conn = getConnection();
@@ -76,6 +78,10 @@ public class DataBase {
         System.out.println("DataBase created");
         return true;
     }
+    /**
+     * Metodo para gerar uma conexão com o banco local
+     * @return uma Connection SQLite
+     */
     public static Connection getConnection()
     {
         Connection conn = null;

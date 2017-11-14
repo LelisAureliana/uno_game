@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.game;
-
-import model.user.User;
+package view.load;
 
 /**
- * Modelo de jogo
- * @author LelaScarlet
+ * Interface para as telas de carregamento
+ * @author sergi
  */
-public class GameModel {
-    public static User USER_LOGGED;
+public interface LoadInterface {
+    public void onLoadComplete();
 }

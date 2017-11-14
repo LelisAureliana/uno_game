@@ -8,10 +8,12 @@ package view;
 import javax.swing.JPanel;
 
 /**
- *
+ * Interface para rtodas as VoiewControllers do sistema
  * @author sergi
  */
-public abstract class ViewController {
-   protected JPanel myView;
+public interface ViewController {
+    /**
+     * Metodo para iniciar a view da controller 
+     */
    public abstract void startView();
 }

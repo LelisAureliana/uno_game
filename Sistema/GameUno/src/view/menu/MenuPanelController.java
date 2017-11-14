@@ -13,27 +13,32 @@ import view.ViewController;
  *
  * @author sergi
  */
-public class MenuPanelController extends ViewController{
-    
+public class MenuPanelController implements ViewController{
+    private MenuPanel myView;
     
     @Override
     public void startView() {
         myView = new MenuPanel(this);
         MainFrameController.setView(myView);
+        //Caso o usuario logado esteja usando o sistema pela primeira vez
         if(GameModel.USER_LOGGED.getFirstContact()==1){
-            ((MenuPanel)myView).showTutorial(true);
-            ((MenuPanel)myView).enableComponents(false);
+           myView.showTutorial(true);
+           myView.enableComponents(false);
         }
     }
-
+    /**
+     * Reponde ao evento de fechar o tutorial
+     */
     void exitTutorial() {
-            ((MenuPanel)myView).showTutorial(false);
-            ((MenuPanel)myView).enableComponents(true);
+           myView.showTutorial(false);
+           myView.enableComponents(true);
             //TODO: Alterar valor do User e salvar
     }
-
+    /**
+     * Sair da aplicação
+     */
     void exitApp() {
-        if(((MenuPanel)myView).confirmExit()){
+        if(myView.confirmExit()){
         } else {
             System.exit(0);
         }

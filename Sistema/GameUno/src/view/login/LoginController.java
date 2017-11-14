@@ -5,38 +5,57 @@
  */
 package view.login;
 
-import javax.swing.JPanel;
 import model.user.User;
 import model.user.UserModel;
 import view.MainFrameController;
 import view.ViewController;
-import view.menu.MenuPanel;
+import view.load.LoadInterface;
+import view.load.LoadPanel;
 import view.menu.MenuPanelController;
 
 
 /**
- *
+ * Controller da view de Login
  * @author sergi
  */
-public class LoginController extends ViewController{
-
- 
+public class LoginController implements ViewController{
+    private LoginPanel myView;
     
     public LoginController(){
         myView  = new LoginPanel(this);
     }
-    
+    /**
+     * Responder ao botao de login
+     * @param login
+     * @param senha 
+     */
     public void onBtnLoginClicked(String login, String senha){
         //Realizar login
         UserModel model = new UserModel();
-        User u = new User();
-        u.setLogin(login);
-        u.setPassword(senha);
-        ((LoginPanel)myView).confirmLogin(model.doLogin(u));
+        User newUser = new User();
+        newUser.setLogin(login);
+        newUser.setPassword(senha);
+        myView.confirmLogin(model.doLogin(newUser));
     }
+    
+    /**
+     * Realizar login
+     */
     public void loginSuccess(){
-        MenuPanelController menuPanelController = new MenuPanelController();
-        menuPanelController.startView();
+        //Carregar jogo, iniciar task de jogo
+        
+        //Definir Task para executar
+        
+        
+        MainFrameController.setView(new LoadPanel(new LoadInterface() {
+            @Override
+            public void onLoadComplete() {
+                MenuPanelController menuPanelController = new MenuPanelController();
+                menuPanelController.startView();
+            }
+        }));
+        
+        
        
     }
     @Override

@@ -6,10 +6,10 @@
 package view;
 
 import javax.swing.JPanel;
-import kernel.AppTasks;
+import kernel.task.AppTask;
 
 /**
- *
+ * Frame principal da aplicação
  * @author sergi
  */
 public class MainFrame extends javax.swing.JFrame {
@@ -20,7 +20,10 @@ public class MainFrame extends javax.swing.JFrame {
     public MainFrame() {
         initComponents(); 
     }
-
+    /**
+     * Settar controller do MainFrame
+     * @param controller 
+     */
     public void setController(MainFrameController controller) {
         this.controller = controller;
     }

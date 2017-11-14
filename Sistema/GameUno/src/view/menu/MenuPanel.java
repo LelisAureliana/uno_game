@@ -5,9 +5,6 @@
  */
 package view.menu;
 
-import java.awt.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -188,6 +185,10 @@ public class MenuPanel extends javax.swing.JPanel {
     private javax.swing.JPanel tutoPanel;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Habilitar ou nao os componentes da tela
+     * @param b 
+     */
     public void enableComponents(boolean b) {
         btnContinue.setEnabled(b);
         btnOut.setEnabled(b);

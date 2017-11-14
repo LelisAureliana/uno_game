@@ -10,7 +10,7 @@ import java.util.List;
 import model.game.GameModel;
 
 /**
- * 
+ * Model de Usuario
  * @author sergi
  */
 public class UserModel {
@@ -19,18 +19,29 @@ public class UserModel {
     public UserModel(){
         this.myDAO = new UserDAO();
     }
-    
+    /**
+     * Listar todos os usuarios do sistema
+     * @return 
+     */
     public List<User> getAllUsers(){
         return myDAO.getAll();
     }
-    
-    public void insertUser(User u){
-        myDAO.INSERT(u);
+    /**
+     * Inserir usuarios
+     * @param newUser 
+     */
+    public void insertUser(User newUser){
+        myDAO.INSERT(newUser);
     }
     
-    public boolean doLogin(User u) {
+    /**
+     * Realizar login de usuario
+     * @param userReceiver
+     * @return 
+     */
+    public boolean doLogin(User userReceiver) {
         
-        User searchUser =  myDAO.doLogin(u);
+        User searchUser =  myDAO.doLogin(userReceiver);
         
         if(searchUser!=null){
             GameModel.USER_LOGGED = searchUser; 

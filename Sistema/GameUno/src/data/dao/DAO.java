@@ -10,7 +10,19 @@ package data.dao;
  * @author sergi
  */
 public interface DAO {
+    /**
+     * Inserir DAO na base de dados
+     * @param myDAO 
+     */
     public void INSERT(Object myDAO);
+    /**
+     * Atualizar DAO na base de dados
+     * @param myDAO 
+     */
     public void UPDATE(Object myDAO);
+    /**
+     * Remover DAO da base de dados
+     * @param myDAO 
+     */
     public void DELETE(Object myDAO);
 }
