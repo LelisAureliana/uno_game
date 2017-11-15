@@ -5,21 +5,32 @@
  */
 package view.menu;
 
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Label;
+import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import view.util.Notification;
+import view.NotificationSupport;
+import view.notification.NotificationType;
+import view.notification.NotificationInterface;
+
 
 /**
  *
  * @author sergi
  */
-public class MenuPanel extends javax.swing.JPanel {
+public class MenuPanel extends javax.swing.JPanel implements NotificationSupport{
     private MenuPanelController controller;
+
     /**
      * Creates new form MenuPanel
      */
     private MenuPanel() {
         initComponents();
-        tutoPanel.setVisible(false);
-
+        
+        
     }
 
     public MenuPanel(MenuPanelController myController) {
@@ -28,7 +39,7 @@ public class MenuPanel extends javax.swing.JPanel {
         
     }
     public void showTutorial(boolean  show){
-        tutoPanel.setVisible(show);
+     
     }
     
     
@@ -41,62 +52,26 @@ public class MenuPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tutoPanel = new javax.swing.JPanel();
-        btnExitTutorial = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        notificationPanel = new view.notification.NotificationPanel();
+        jButton1 = new javax.swing.JButton();
         button_panel = new javax.swing.JPanel();
         btnStart = new javax.swing.JButton();
         btnContinue = new javax.swing.JButton();
         btnRanking = new javax.swing.JButton();
         btnOut = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         iconBack = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(notificationPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 770, 30));
 
-        tutoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnExitTutorial.setText("X");
-        btnExitTutorial.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconabout.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExitTutorialActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        tutoPanel.add(btnExitTutorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ninja_64.png"))); // NOI18N
-
-        jLabel3.setText("Cococococococ");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 8, Short.MAX_VALUE)))
-                .addGap(237, 237, 237))
-        );
-
-        tutoPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 34, -1, 320));
-
-        add(tutoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 480, 440));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 40, 30));
 
         button_panel.setOpaque(false);
 
@@ -155,14 +130,6 @@ public class MenuPanel extends javax.swing.JPanel {
 
         add(button_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 220, 200));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconabout.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 530, 40, 30));
-
         iconBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo_Uno_600x500.png"))); // NOI18N
         add(iconBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 590, -1));
     }// </editor-fold>//GEN-END:initComponents
@@ -171,11 +138,6 @@ public class MenuPanel extends javax.swing.JPanel {
     
         controller.exitApp();
     }//GEN-LAST:event_btnOutActionPerformed
-
-    private void btnExitTutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitTutorialActionPerformed
-        // TODO add your handling code here:
-        controller.exitTutorial();
-    }//GEN-LAST:event_btnExitTutorialActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
      // TODO add your handling code here:
@@ -187,17 +149,13 @@ public class MenuPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinue;
-    private javax.swing.JButton btnExitTutorial;
     private javax.swing.JButton btnOut;
     private javax.swing.JButton btnRanking;
     private javax.swing.JButton btnStart;
     private javax.swing.JPanel button_panel;
     private javax.swing.JLabel iconBack;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel tutoPanel;
+    private view.notification.NotificationPanel notificationPanel;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -214,5 +172,19 @@ public class MenuPanel extends javax.swing.JPanel {
 
     void showAbout(boolean b) {
         //panelAbout.set
+    }
+
+    @Override
+    public void notify(NotificationType notificationType,String message) {
+        
+        Notification notification = new Notification(notificationType, message);
+        notificationPanel.showNotification(notification, new NotificationInterface() {
+            @Override
+            public void onCloseNotification() {
+                notificationPanel.clearPanel();
+            }
+        });
+        
+       
     }
 }

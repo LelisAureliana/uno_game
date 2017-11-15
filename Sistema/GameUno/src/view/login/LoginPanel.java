@@ -6,6 +6,11 @@
 package view.login;
 
 import javax.swing.JOptionPane;
+import view.MainFrameController;
+import view.NotificationSupport;
+import view.notification.NotificationInterface;
+import view.notification.NotificationType;
+import view.util.Notification;
 
 
 
@@ -13,7 +18,7 @@ import javax.swing.JOptionPane;
  *
  * @author sergi
  */
-public class LoginPanel extends javax.swing.JPanel {
+public class LoginPanel extends javax.swing.JPanel implements NotificationSupport{
     private LoginController mController;
     /**
      * Creates new form LoginPanel
@@ -33,9 +38,11 @@ public class LoginPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        notificationPanel1 = new view.notification.NotificationPanel();
         panelLogin = new javax.swing.JPanel();
-        btnRanking1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -46,17 +53,23 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new java.awt.GridBagLayout());
+
+        notificationPanel1.setPreferredSize(new java.awt.Dimension(100, 50));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        add(notificationPanel1, gridBagConstraints);
 
         panelLogin.setOpaque(false);
         panelLogin.setPreferredSize(new java.awt.Dimension(250, 250));
-        panelLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelLogin.setLayout(new javax.swing.OverlayLayout(panelLogin));
 
-        btnRanking1.setBackground(new java.awt.Color(0, 149, 203));
-        btnRanking1.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        btnRanking1.setForeground(new java.awt.Color(51, 51, 51));
-        btnRanking1.setText("Visualizar ranking");
-        panelLogin.add(btnRanking1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 200, -1));
+        jPanel1.setAlignmentY(-2.0F);
+        jPanel1.setOpaque(false);
 
         btnLogin.setBackground(new java.awt.Color(122, 213, 75));
         btnLogin.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -67,38 +80,94 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnLoginActionPerformed(evt);
             }
         });
-        panelLogin.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, -1));
 
         btnRegister.setBackground(new java.awt.Color(0, 149, 203));
         btnRegister.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(255, 255, 255));
         btnRegister.setText("Cadastrar");
-        panelLogin.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 200, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Senha");
-        panelLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Usuário");
-        panelLogin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, -1));
 
         txtLogin.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
-        txtLogin.setText("sdteotonio");
-        panelLogin.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 200, -1));
-        panelLogin.add(passWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 200, -1));
 
+        backgroundLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backgroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background_login.png"))); // NOI18N
-        panelLogin.add(backgroundLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 240, 270));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(passWord, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(backgroundLogin))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jLabel4)
+                .addGap(142, 142, 142)
+                .addComponent(btnRegister))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(btnLogin))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(passWord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jLabel3))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(backgroundLogin))
+        );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/256x230_logo_uno.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
+        panelLogin.add(jPanel1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        add(panelLogin, gridBagConstraints);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/400X300_logo_uno.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        add(jLabel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
@@ -110,11 +179,12 @@ public class LoginPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLogin;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnRanking1;
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private view.notification.NotificationPanel notificationPanel1;
     private javax.swing.JPanel panelLogin;
     private javax.swing.JPasswordField passWord;
     private javax.swing.JTextField txtLogin;
@@ -125,7 +195,18 @@ public class LoginPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this,"Login Realizado com sucesso");
             mController.loginSuccess();
         }else{
-            JOptionPane.showMessageDialog(this,"Falha ao realizar login");
+            MainFrameController.shootNotification(NotificationType.WARNING, "Usuário ou senha incorreto.");
         }
    }
+
+    @Override
+    public void notify(NotificationType notificationType, String message) {
+        Notification notification = new Notification(notificationType, message);
+        notificationPanel1.showNotification(notification, new NotificationInterface() {
+            @Override
+            public void onCloseNotification() {
+                System.out.println("Ahaha");
+            }
+        },3);
+    }
 }

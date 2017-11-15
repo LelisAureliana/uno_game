@@ -8,6 +8,7 @@ package view.menu;
 import model.game.GameModel; 
 import view.MainFrameController;
 import view.ViewController;
+import view.notification.NotificationType;
 
 /**
  *
@@ -24,6 +25,7 @@ public class MenuPanelController implements ViewController{
         if(GameModel.USER_LOGGED.getFirstContact()==1){
            myView.showTutorial(true);
            myView.enableComponents(false);
+           MainFrameController.shootNotification(NotificationType.WARNING,"Vai que é tua tafarel");
         }
     }
     /**

@@ -5,8 +5,14 @@
  */
 package view;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Label;
+import java.awt.Point;
+import java.awt.Rectangle;
 import javax.swing.JPanel;
 import kernel.task.AppTask;
+import view.notification.NotificationType;
 
 /**
  * Frame principal da aplicação
@@ -19,6 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents(); 
+        setExtendedState(MAXIMIZED_BOTH);
     }
     /**
      * Settar controller do MainFrame
@@ -38,19 +45,38 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        notifyPanel = new javax.swing.JPanel();
+        teste = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+        javax.swing.GroupLayout notifyPanelLayout = new javax.swing.GroupLayout(notifyPanel);
+        notifyPanel.setLayout(notifyPanelLayout);
+        notifyPanelLayout.setHorizontalGroup(
+            notifyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 606, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        notifyPanelLayout.setVerticalGroup(
+            notifyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
+
+        getContentPane().add(notifyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
+
+        javax.swing.GroupLayout testeLayout = new javax.swing.GroupLayout(teste);
+        teste.setLayout(testeLayout);
+        testeLayout.setHorizontalGroup(
+            testeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 520, Short.MAX_VALUE)
+        );
+        testeLayout.setVerticalGroup(
+            testeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(teste, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 520, 240));
 
         pack();
         setLocationRelativeTo(null);
@@ -92,5 +118,18 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel notifyPanel;
+    private javax.swing.JPanel teste;
     // End of variables declaration//GEN-END:variables
+
+    void shootNotification(NotificationType notificationType,String message) {
+        try{
+            NotificationSupport actualView = (NotificationSupport)this.getContentPane();
+            actualView.notify(notificationType,message);
+        }catch(Exception ex){
+            
+        }
+        }
+
+ 
 }

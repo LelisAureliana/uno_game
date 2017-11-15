@@ -11,6 +11,7 @@ import kernel.task.TestTask;
 import view.load.LoadInterface;
 import view.load.LoadPanel;
 import view.login.LoginController;
+import view.notification.NotificationType;
 
 /**
  * Frame principal
@@ -18,6 +19,10 @@ import view.login.LoginController;
  */
 public class MainFrameController {
     private static MainFrame mainFrame;
+
+    public static void shootNotification(NotificationType notificationType,String message) {
+        mainFrame.shootNotification(notificationType,message);
+    }
     public MainFrameController(){
         mainFrame = new MainFrame();
     }
