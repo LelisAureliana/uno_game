@@ -3,36 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.login;
-
-import javax.swing.JOptionPane;
-import view.notification.NotificationType;
-import view.util.Notification;
-import view.notification.NotificationEventsInterface;
-import view.notification.NotificationManagerInterface;
-
-
+package util;
 
 /**
  *
  * @author sergi
  */
-public class LoginPanel extends javax.swing.JPanel{
-    private LoginPanelController myController;
+public class tete extends javax.swing.JPanel {
+
     /**
-     * Creates new form LoginPanel
+     * Creates new form tete
      */
-    private LoginPanel() {
+    public tete() {
         initComponents();
     }
-    
-    public LoginPanel(LoginPanelController controller){
-        this();
-        this.myController = controller;
-    }
-    public boolean showConfirmDialog(String message, String title){
-        return JOptionPane.showConfirmDialog(this, message,title, JOptionPane.OK_CANCEL_OPTION)==2?false:true;
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,9 +28,6 @@ public class LoginPanel extends javax.swing.JPanel{
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -55,28 +37,11 @@ public class LoginPanel extends javax.swing.JPanel{
         btnOut = new javax.swing.JButton();
         backgroundLogin = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 255));
-        setPreferredSize(new java.awt.Dimension(500, 488));
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+        setPreferredSize(new java.awt.Dimension(400, 300));
 
+        jPanel1.setAlignmentY(-2.0F);
         jPanel1.setOpaque(false);
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0);
-        flowLayout1.setAlignOnBaseline(true);
-        jPanel1.setLayout(flowLayout1);
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/400X300_logo_uno.png"))); // NOI18N
-        jPanel1.add(jLabel1);
-
-        add(jPanel1);
-
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
-
-        jPanel3.setAlignmentY(-2.0F);
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(400, 500));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnLogin.setBackground(new java.awt.Color(122, 213, 75));
         btnLogin.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -87,7 +52,7 @@ public class LoginPanel extends javax.swing.JPanel{
                 btnLoginActionPerformed(evt);
             }
         });
-        jPanel3.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 230, 40));
+        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 200, -1));
 
         btnRegister.setBackground(new java.awt.Color(0, 149, 203));
         btnRegister.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -98,25 +63,23 @@ public class LoginPanel extends javax.swing.JPanel{
                 btnRegisterActionPerformed(evt);
             }
         });
-        jPanel3.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 230, 40));
+        jPanel1.add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 200, -1));
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Senha");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 230, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 200, -1));
 
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Usuário");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 230, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, -1));
 
-        txtLogin.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jPanel3.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 230, 30));
-
-        passWord.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jPanel3.add(passWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 230, 30));
+        txtLogin.setFont(new java.awt.Font("Arial Black", 1, 10)); // NOI18N
+        jPanel1.add(txtLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, -1));
+        jPanel1.add(passWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, -1));
 
         btnOut.setBackground(new java.awt.Color(235, 26, 34));
         btnOut.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
@@ -127,31 +90,42 @@ public class LoginPanel extends javax.swing.JPanel{
                 btnOutActionPerformed(evt);
             }
         });
-        jPanel3.add(btnOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 230, 40));
+        jPanel1.add(btnOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 200, -1));
 
         backgroundLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backgroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/250X300_background.png"))); // NOI18N
-        jPanel3.add(backgroundLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 410, 360));
+        backgroundLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background_login.png"))); // NOI18N
+        jPanel1.add(backgroundLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 270));
 
-        jPanel2.add(jPanel3);
-
-        add(jPanel2);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        myController.onBtnLoginClicked(txtLogin.getText(),String.valueOf(passWord.getPassword()));
+       
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         // TODO add your handling code here:
-        myController.onBtnRegisterClicked();
-
+        
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutActionPerformed
         // TODO add your handling code here:
-        myController.onBtnOutClicked();
     }//GEN-LAST:event_btnOutActionPerformed
 
 
@@ -160,16 +134,10 @@ public class LoginPanel extends javax.swing.JPanel{
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnOut;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField passWord;
     private javax.swing.JTextField txtLogin;
     // End of variables declaration//GEN-END:variables
-    public void showAlertDialog(String message){
-         JOptionPane.showMessageDialog(this,message);
-    }
 }

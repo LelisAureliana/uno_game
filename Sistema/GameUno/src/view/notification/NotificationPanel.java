@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
+import util.NotificationTime;
 import view.util.Notification;
 
 /**
@@ -28,7 +29,7 @@ public class NotificationPanel extends javax.swing.JPanel {
         this.setLayout(lay);
         this.setOpaque(false);
     }
-    public void showNotification(Notification notification,NotificationInterface notificationInterface){
+    public void showNotification(Notification notification,NotificationEventsInterface notificationInterface,NotificationTime time){
         notification.setInterface(notificationInterface);
         
         notification.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -37,14 +38,12 @@ public class NotificationPanel extends javax.swing.JPanel {
         }
         this.add(notification);
         this.revalidate();
-    }
-    public void showNotification(Notification notification,NotificationInterface notificationInterface,float seconds){
-        showNotification(notification, notificationInterface);
+        
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Thread.sleep((long) (seconds*1000));
+                    Thread.sleep((long) (time.getValue()*1000));
                     clearPanel();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(NotificationPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,6 +78,7 @@ public class NotificationPanel extends javax.swing.JPanel {
             .addGap(0, 51, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

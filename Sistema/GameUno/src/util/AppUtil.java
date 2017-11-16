@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
-
-import view.notification.NotificationType;
+package util;
 
 /**
  *
  * @author sergi
  */
-public interface NotificationSupport {
-    public void notify(NotificationType notificationType,String message);
+public class AppUtil {
+    public static int USER_FIRST_CONTACT_VALUE = 1;
+    
 }

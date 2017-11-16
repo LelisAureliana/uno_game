@@ -6,9 +6,6 @@
 package view.load;
 
 
-import java.awt.FlowLayout;
-import java.awt.LayoutManager;
-import java.awt.Rectangle;
 import kernel.AppTaskManager;
 
 
@@ -68,6 +65,7 @@ public class LoadPanel extends javax.swing.JPanel {
         txtStatus.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtStatus.setText("Progress");
 
+        progressBar.setForeground(new java.awt.Color(153, 51, 255));
         progressBar.setMaximum(10);
         progressBar.setAlignmentX(0.0F);
 

@@ -5,15 +5,15 @@
  */
 package view.util;
 
-import view.notification.NotificationInterface;
 import view.notification.NotificationType;
+import view.notification.NotificationEventsInterface;
 
 /**
  *
  * @author sergi
  */
 public class Notification extends javax.swing.JPanel {
-    private NotificationInterface notifyInterface;
+    private NotificationEventsInterface notifyInterface;
     /**
      * Creates new form Notify
      */
@@ -57,7 +57,7 @@ public class Notification extends javax.swing.JPanel {
         labelText.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
         labelText.setForeground(new java.awt.Color(255, 255, 255));
         labelText.setText("Teste");
-        add(labelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 450, -1));
+        add(labelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 460, -1));
 
         labelBackground.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/notify_warning.png"))); // NOI18N
@@ -90,7 +90,7 @@ public class Notification extends javax.swing.JPanel {
         }
     }
 
-    public void setInterface(NotificationInterface notificationInterface) {
+    public void setInterface(NotificationEventsInterface notificationInterface) {
         this.notifyInterface =notificationInterface;
     }
 

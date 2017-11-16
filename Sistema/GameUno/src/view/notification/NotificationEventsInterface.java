@@ -9,6 +9,6 @@ package view.notification;
  *
  * @author sergi
  */
-public interface NotificationInterface {
+public interface NotificationEventsInterface {
     public void onCloseNotification();
 }
