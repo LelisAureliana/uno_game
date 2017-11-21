@@ -8,7 +8,7 @@ package view;
 import javax.swing.JPanel;
 import kernel.task.StartTask;
 import kernel.task.TestTask;
-import util.NotificationTime;
+import view.notification.NotificationTime;
 import view.load.LoadInterface;
 import view.load.LoadPanel;
 import view.login.LoginPanelController;

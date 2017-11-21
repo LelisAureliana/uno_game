@@ -5,18 +5,12 @@
  */
 package view.login;
 
+import kernel.task.UserTask;
 import exception.ModelException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import kernel.task.GameTask;
-import kernel.task.StartTask;
-import model.game.GameModel;
 import model.user.User;
 import model.user.UserModel;
-import view.about.AboutPanel;
 import view.MainFrameController;
 import view.ViewController;
-import view.about.AboutPanelController;
 import view.load.LoadInterface;
 import view.load.LoadPanel;
 import view.menu.MenuPanelController;
@@ -64,7 +58,7 @@ public class LoginPanelController implements ViewController{
 
         //Definir Task para executar
         new Thread(() -> {
-            new GameTask().executeTasks();
+            new UserTask().executeTasks();
         }).start();
         
         MainFrameController.setView(new LoadPanel(new LoadInterface() {
@@ -78,7 +72,6 @@ public class LoginPanelController implements ViewController{
     @Override
     public void startView() {
         MainFrameController.setView(myView);
-       
     }
 
     void onBtnRegisterClicked() {
