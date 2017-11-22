@@ -5,7 +5,11 @@
  */
 package model.game;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 import java.util.Stack;
+import javax.swing.text.html.HTMLDocument;
 import model.card.Card;
 import model.card.CardModel;
 import model.player.Player;
@@ -38,7 +42,7 @@ public class GameModel {
         Stack newStack = cardModel.generateCardStack();
         //AQUI CHAMA O METODO DE EMBARALHAR A PILHA PASSANDO ELA COMO PARAMETRO 
         
-        //shuffleCards(actualGame.getStackCard());
+        shuffleCards(newStack);
         
         actualGame.setStackCard(newStack);
         
@@ -116,5 +120,29 @@ public class GameModel {
 
     public boolean loadGameSavedFromUser(User user) {
         return false;
+    }
+
+    private void shuffleCards(Stack<Card> stackCard) {
+        ArrayList<Card> listCards = new ArrayList<>();
+        while(!stackCard.isEmpty()){
+            listCards.add(stackCard.pop());
+        }
+        Random random = new Random();
+        for (int i =0;i<1000;i++) {
+            int n1 = random.nextInt(listCards.size());
+            
+            Card auxCard = listCards.get(n1);
+            
+            int n2 = random.nextInt(listCards.size());
+            Card auxCard2 = listCards.get(n2);
+            
+            listCards.set(n1, auxCard2);
+            listCards.set(n2, auxCard);
+        }
+        Iterator<Card> iterable = listCards.iterator();
+        while (iterable.hasNext()) {
+            stackCard.push(iterable.next());
+        }
+        System.out.println(stackCard);
     }
 }
