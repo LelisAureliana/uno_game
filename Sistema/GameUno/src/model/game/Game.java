@@ -21,7 +21,7 @@ public class Game {
     private Player[] players = new Player[4];
     private GameMode gameMode;
     private GameStatus gameStatus;
-
+    
     public GameMode getGameMode() {
         return gameMode;
     }

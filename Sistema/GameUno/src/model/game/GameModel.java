@@ -20,9 +20,9 @@ import model.user.UserModel;
  * Modelo de jogo
  * @author LelaScarlet
  */
-public class GameModel {
+public class GameModel implements  GameStatusInterface{
     private Game actualGame;
-    
+    private GameStatusInterface gameStatusInterface;
     private static GameModel myInstaModel;
     private GameModel(){}
     /**
@@ -52,7 +52,15 @@ public class GameModel {
         
         //Distribui as cartas
         shareCards(players);
+        
+        
+        gameCreated();
     }
+    
+    public void setGameStatusInterface(GameStatusInterface gameStatusInterface){
+        this.gameStatusInterface = gameStatusInterface;
+    }
+    
     /**
      * Retirar a primeira carta do topo da pilha
      * @return 
@@ -144,5 +152,17 @@ public class GameModel {
             stackCard.push(iterable.next());
         }
         System.out.println(stackCard);
+    }
+
+    @Override
+    public void gameCreated() {
+        actualGame.setGameStatus(GameStatus.CREATED);
+        gameStatusInterface.gameCreated();
+    }
+
+    @Override
+    public void gameStarted() {
+        actualGame.setGameStatus(GameStatus.STARTED);
+        gameStatusInterface.gameStarted();
     }
 }
