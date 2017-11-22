@@ -8,7 +8,7 @@ package model.user;
 import java.sql.Date;
 
 /**
- *
+ * Entidade de Usuario
  * @author sergi
  */
 public class User {

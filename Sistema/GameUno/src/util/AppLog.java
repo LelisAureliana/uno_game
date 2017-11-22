@@ -12,13 +12,17 @@ import java.io.PrintWriter;
 import java.util.Calendar;
 
 /**
- *
+ * Classe para logs da aplicação, salvas em um .txt (uno_log.txt)
  * @author sergi
  */
 public class AppLog {
     private static final File myLogFile = new File("uno_log.txt");
     private static boolean isFirstInsertDay = true;
-  
+    
+    /**
+     * Loggar um erro na aplicação
+     * @param message 
+     */
     public static void error(String message){
         String line = "[Erro]\t["+Calendar.getInstance().getTime()+"]-> "+message;
         insertInFile(line);
@@ -29,7 +33,11 @@ public class AppLog {
         insertInFile(line);
     }
     */
-   
+    
+    /**
+     * Inserir linha no arquivo .txt
+     * @param line 
+     */
     private static void insertInFile(String line){
         if(isFirstInsertDay){
             String line_1 = "###\t UNO Logger \t###\t";

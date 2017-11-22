@@ -5,22 +5,23 @@
  */
 package kernel;
 
+import kernel.task.StartTask;
 import view.MainFrameController;
-import view.load.LoadPanel;
 
 /**
  *
  * @author sergi
  */
 public class AppCore {
+    /**
+     * Classe responsável por iniciar a aplicação
+     * @param args 
+     */
     public static void main(String[] args){
         //Jogo 
         new Thread(() -> {
             new MainFrameController().startView();
         }).start();
-        //Tasks
-        new Thread(() -> {
-            new AppTasks();
-        }).start();
+        
     }
 }
